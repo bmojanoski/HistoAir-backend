@@ -6,6 +6,7 @@ import org.apache.jena.rdf.model.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -22,10 +23,10 @@ public class RestController {
     }
 
     @GetMapping("/flights")
-    List<FlightData> result(Model flightRecordsInput, String country) {
+    List<FlightData> result(@RequestParam String country) {
         Model flightRecords = ModelFactory.createDefaultModel();
         flightRecords.read("https://www.dropbox.com/s/oat5rchu4ohkmvz/FlightsRecord.ttl?dl=1", "TTL");
 
-        return this.flightsRepository.getFlightsWithArrivalCountry(flightRecords, "USA");
+        return this.flightsRepository.getFlightsWithArrivalCountry(flightRecords, country);
     }
 }
