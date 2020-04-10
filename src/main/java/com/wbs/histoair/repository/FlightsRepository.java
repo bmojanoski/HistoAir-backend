@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 @Repository
@@ -53,12 +54,13 @@ public class FlightsRepository {
 
                 flightsInfo.add(createFlightDataObject(subject));
             }
+            if(flightsInfo.size() == 4) break;
         }
 
         return flightsInfo;
     }
 
-    public List<FlightData> getFlightsWithTimeOfArival(Model model, LocalDateTime arrivalTime, boolean before){
+    public List<FlightData> getFlightsWithTimeOfArival(Model model, ZonedDateTime arrivalTime, boolean before){
 
         List<FlightData> flightsInfo = new ArrayList<FlightData>();
 
@@ -71,21 +73,22 @@ public class FlightsRepository {
             Property predicate = stmt.getPredicate();
             RDFNode value = stmt.getObject();
 
-            if(before && LocalDateTime.parse(value.toString()).isBefore(arrivalTime)) {
+            ZonedDateTime localDateTime = ZonedDateTime.parse(value.toString());
+            if(before && localDateTime.isBefore(arrivalTime)) {
 
                 flightsInfo.add(createFlightDataObject(subject));
-            } else if(!before && LocalDateTime.parse(value.toString()).isAfter(arrivalTime)) {
+            } else if(!before && localDateTime.isAfter(arrivalTime)) {
 
                 flightsInfo.add(createFlightDataObject(subject));
 
             }
-
+            if(flightsInfo.size() == 4) break;
         }
 
         return flightsInfo;
     }
 
-    public List<FlightData> getFlightsWithTimeOfDeparture(Model model, LocalDateTime departureTime, boolean before){
+    public List<FlightData> getFlightsWithTimeOfDeparture(Model model, ZonedDateTime departureTime, boolean before){
 
         List<FlightData> flightsInfo = new ArrayList<FlightData>();
 
@@ -97,13 +100,15 @@ public class FlightsRepository {
             Resource subject = stmt.getSubject();
             Property predicate = stmt.getPredicate();
             RDFNode value = stmt.getObject();
-            if(before && LocalDateTime.parse(value.toString()).isBefore(departureTime)) {
+            ZonedDateTime localDateTime = ZonedDateTime.parse(value.toString());
+            if(before && localDateTime.isBefore(departureTime)) {
 
                 flightsInfo.add(createFlightDataObject(subject));
-            } else if(!before && LocalDateTime.parse(value.toString()).isAfter(departureTime)) {
+            } else if(!before && localDateTime.isAfter(departureTime)) {
 
                 flightsInfo.add(createFlightDataObject(subject));
             }
+            if(flightsInfo.size() == 4) break;
 
         }
 
@@ -124,6 +129,7 @@ public class FlightsRepository {
             RDFNode value = stmt.getObject();
 
             flightsInfo.add(createFlightDataObject(subject));
+            if(flightsInfo.size() == 4) break;
         }
 
         return flightsInfo;
@@ -143,6 +149,7 @@ public class FlightsRepository {
             RDFNode value = stmt.getObject();
 
             flightsInfo.add(createFlightDataObject(subject));
+            if(flightsInfo.size() == 4) break;
         }
 
         return flightsInfo;
@@ -162,6 +169,7 @@ public class FlightsRepository {
             RDFNode value = stmt.getObject();
 
             flightsInfo.add(createFlightDataObject(subject));
+            if(flightsInfo.size() == 4) break;
         }
 
         return flightsInfo;
@@ -186,7 +194,7 @@ public class FlightsRepository {
 
                 flightsInfo.add(createFlightDataObject(subject));
             }
-            if(flightsInfo.size() == 3) break;
+            if(flightsInfo.size() == 4) break;
         }
 
 
@@ -212,7 +220,7 @@ public class FlightsRepository {
 
                 flightsInfo.add(createFlightDataObject(subject));
             }
-
+            if(flightsInfo.size() == 4) break;
         }
 
         return flightsInfo;
