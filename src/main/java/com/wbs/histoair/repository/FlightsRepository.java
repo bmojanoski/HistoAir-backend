@@ -82,7 +82,7 @@ public class FlightsRepository {
                 flightsInfo.add(createFlightDataObject(subject));
 
             }
-            if(flightsInfo.size() == 4) break;
+            if(flightsInfo.size() == 10) break;
         }
 
         return flightsInfo;
@@ -108,7 +108,7 @@ public class FlightsRepository {
 
                 flightsInfo.add(createFlightDataObject(subject));
             }
-            if(flightsInfo.size() == 4) break;
+            if(flightsInfo.size() == 10) break;
 
         }
 
@@ -129,7 +129,7 @@ public class FlightsRepository {
             RDFNode value = stmt.getObject();
 
             flightsInfo.add(createFlightDataObject(subject));
-            if(flightsInfo.size() == 4) break;
+            if(flightsInfo.size() == 10) break;
         }
 
         return flightsInfo;
@@ -149,7 +149,7 @@ public class FlightsRepository {
             RDFNode value = stmt.getObject();
 
             flightsInfo.add(createFlightDataObject(subject));
-            if(flightsInfo.size() == 4) break;
+            if(flightsInfo.size() == 10) break;
         }
 
         return flightsInfo;
@@ -169,7 +169,7 @@ public class FlightsRepository {
             RDFNode value = stmt.getObject();
 
             flightsInfo.add(createFlightDataObject(subject));
-            if(flightsInfo.size() == 4) break;
+            if(flightsInfo.size() == 10) break;
         }
 
         return flightsInfo;
@@ -194,7 +194,7 @@ public class FlightsRepository {
 
                 flightsInfo.add(createFlightDataObject(subject));
             }
-            if(flightsInfo.size() == 4) break;
+            if(flightsInfo.size() == 10) break;
         }
 
 
@@ -220,7 +220,7 @@ public class FlightsRepository {
 
                 flightsInfo.add(createFlightDataObject(subject));
             }
-            if(flightsInfo.size() == 4) break;
+            if(flightsInfo.size() == 10) break;
         }
 
         return flightsInfo;

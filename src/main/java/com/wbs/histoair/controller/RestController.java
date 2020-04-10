@@ -28,7 +28,7 @@ public class RestController {
         this.flightsRepository = flightsRepository;
     }
 
-    @GetMapping("/flightsByCountry")
+    @GetMapping("/flights-country")
     List<FlightData> flightsByCountry(@RequestParam String country, @RequestParam String info) {
         Model flightRecords = ModelFactory.createDefaultModel();
         flightRecords.read("https://www.dropbox.com/s/oat5rchu4ohkmvz/FlightsRecord.ttl?dl=1", "TTL");
@@ -40,7 +40,7 @@ public class RestController {
         }
     }
 
-    @GetMapping("/flightsByAirport")
+    @GetMapping("/flights-airport")
     List<FlightData> flightsByAirport(@RequestParam String airport, @RequestParam String info) {
         Model flightRecords = ModelFactory.createDefaultModel();
         flightRecords.read("https://www.dropbox.com/s/oat5rchu4ohkmvz/FlightsRecord.ttl?dl=1", "TTL");
